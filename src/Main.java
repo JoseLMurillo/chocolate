@@ -1,44 +1,23 @@
+import java.util.Enumeration;
+import java.util.Hashtable;
+
 public class Main {
     public static void main(String[] args) {
         System.out.println("Hello world!");
 
         Company company = new Company();
 
-        /* SERVICIOS GENERALES*/
-        Employee generalService1 = new Employee(123,"Jose", Charge.GENERAL_SERVICES.getCharge(), Salary.GENERAL_SERVICES.getSalary());
-        Employee generalService2 = new Employee(234,"Luis", Charge.GENERAL_SERVICES.getCharge(), Salary.GENERAL_SERVICES.getSalary());
+        company.setEmployeesHashTable(Default.chargeDefault());
 
-        /* COORDINADOR TH*/
-        Employee coordinator = new Employee(345, "Andres", Charge.HUMAN_TALENT.getCharge(), Salary.HUMAN_TALENT.getSalary());
+        company.printEmployees();
 
-        /* SEGURIDAD*/
-        Employee security1 = new Employee(456, "Kevin", Charge.SECURITY.getCharge(), Salary.SECURITY.getSalary());
-        Employee security2 = new Employee(567, "Karen", Charge.SECURITY.getCharge(), Salary.SECURITY.getSalary());
+        Employee employee = new Employee(98765444, "CABRA", Charge.HUMAN_TALENT.getCharge(), Salary.HUMAN_TALENT.getSalary());
+        company.addEmployee(employee);
 
-        /* PLANTA*/
-        Employee floor1 = new Employee(678, "Ector", Charge.FLOOR.getCharge(), Salary.FLOOR.getSalary());
-        Employee floor2 = new Employee(789, "Sebastian", Charge.FLOOR.getCharge(), Salary.FLOOR.getSalary());
-        Employee floor3 = new Employee(890, "Rut", Charge.FLOOR.getCharge(), Salary.FLOOR.getSalary());
-        Employee floor4 = new Employee(111, "Camila", Charge.FLOOR.getCharge(), Salary.FLOOR.getSalary());
+        System.out.println();
 
-        /* CEO*/
-        Employee ceo = new Employee(666, "Julian", Charge.CEO.getCharge(), Salary.CEO.getSalary());
+        company.printEmployees();
 
-        company.addEmployee(generalService1);
-        company.addEmployee(generalService2);
-        company.addEmployee(coordinator);
-        company.addEmployee(security1);
-        company.addEmployee(security2);
-        company.addEmployee(floor1);
-        company.addEmployee(floor2);
-        company.addEmployee(floor3);
-        company.addEmployee(floor4);
-        company.addEmployee(ceo);
-
-        for (Employee employee :
-                company.getEmployees()) {
-            System.out.println(employee.getName());
-        }
     }
 
     /*
