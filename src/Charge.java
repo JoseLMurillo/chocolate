@@ -1,22 +1,8 @@
-public enum Charge {
-    GENERAL_SERVICES("General services"),
-    HUMAN_TALENT("Human talent"),
-    SECURITY("Security"),
-    FLOOR("Plant"),
-    CEO("Ceo");
+abstract class Charge {
+    String name;
+    Integer salary;
 
-    private String charge;
+    abstract String getName();
 
-    Charge(String charge) {
-        this.charge = charge;
-    }
-
-    String getCharge(){
-        return this.charge;
-    }
-
-    void setCharge(String charge){
-         this.charge = charge;
-    }
-
+    abstract Integer getSalary();
 }

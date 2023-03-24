@@ -3,7 +3,7 @@ public enum Salary {
     HUMAN_TALENT(3000000),
     SECURITY(1500000),
     FLOOR(2300000),
-    CEO(15000000);
+    CEO(15700000);
 
     private Integer salary;
 
