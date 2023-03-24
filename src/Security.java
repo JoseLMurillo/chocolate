@@ -1,13 +1,13 @@
 public class Security extends Charge {
 
     Security(){
-        name = "Security";
+        name = ChargeNames.SECURITY;
         salary = 1500000;
     }
 
     @Override
     String getName() {
-        return name;
+        return name.getName();
     }
 
     @Override

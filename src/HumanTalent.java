@@ -1,13 +1,13 @@
 public class HumanTalent extends Charge {
 
     HumanTalent(){
-        name = "Human Talent";
+        name = ChargeNames.HUMAN_TALENT;
         salary = 3000000;
     }
 
     @Override
     String getName() {
-        return name;
+        return name.getName();
     }
 
     @Override

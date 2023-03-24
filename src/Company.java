@@ -14,21 +14,53 @@ public class Company {
     }
 
 
-    public Hashtable<Integer, Employee> getEmployeeForCharge(String name){
+    public Boolean getEmployeeForCharge(Integer name){
         Enumeration<Integer> keys = this.hashtable.keys();
+        Charge element;
+        Boolean exist = false;
+
+        switch (name) {
+            case 1:
+                element = new GeneralServices();
+                break;
+
+            case 2:
+                element = new HumanTalent();
+                break;
+
+            case 3:
+                element = new Security();
+                break;
+
+            case 4:
+                element =new Floor();
+                break;
+
+            case 5:
+                element = new Ceo();
+                break;
+
+            default:
+                element = null;
+                Mensajes.valueNoValid();
+                break;
+        }
+
+
 
         System.out.println("Id list: ");
         while (keys.hasMoreElements()) {
             Integer key = keys.nextElement();
 
-            if(this.hashtable.get(key).getCharge().getName() == name){
+            if(element.getSalary().compareTo(this.hashtable.get(key).getCharge().getSalary()) == 0){
                 System.out.println("Key: " + key);
                 /*System.out.println("Key: " + key +
                         ", Name: " + this.hashtable.get(key).getName() +
                         ", Charge  " + this.hashtable.get(key).getCharge().getName());*/
+            exist = true;
             }
         }
-        return chargeHastable;
+        return exist;
     }
 
 

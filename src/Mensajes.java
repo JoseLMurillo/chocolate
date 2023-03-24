@@ -63,4 +63,20 @@ public class Mensajes{
   public static void insertIdOrExit(){
       System.out.print("Insert id to search, -1 to exit: ");
   }
+
+  public static void monthAdmission(){
+      System.out.print("Insert month of admission: ");
+  }
+
+  public static void workedDays(){
+      System.out.print("Insert worked days: ");
+  }
+
+  public static void noFound(){
+      System.out.println("No found");
+  }
+
+  public static void lineBreak(){
+      System.out.println("\n");
+  }
 }

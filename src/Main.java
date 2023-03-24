@@ -3,7 +3,6 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
 
         Company company = new Company();
         company.setEmployeesHashTable(Default.chargeDefault());
@@ -39,8 +38,15 @@ public class Main {
 
                         if (correct) {
                             Mensajes.insertName();
+                            String name = scanner.nextLine();
                             try {
-                                employee.setName(scanner.nextLine());
+                                if(name != ""){
+                                    employee.setName(scanner.nextLine());
+                                }
+                                else {
+                                    Mensajes.valueNoValid();
+                                }
+
                             } catch (NumberFormatException e) {
                                 correct = false;
                                 Mensajes.errorNumberInsert();
@@ -87,7 +93,7 @@ public class Main {
 
                         if(correct){
                             try {
-                                System.out.print("Insert month of admission: ");
+                                Mensajes.monthAdmission();
                                 Integer temp = Integer.parseInt(scanner.nextLine());
 
                                 if (temp < 0) {
@@ -104,28 +110,39 @@ public class Main {
                             }
                         }
 
-                        /*if(correct) {
-
+                        if(correct) {
                             try {
-                                System.out.print("Insert worked days: ");
-                                monthHistory.setDaysWorkMonth(scanner.nextInt());
+
+                                Mensajes.workedDays();
+                                Integer temp = Integer.parseInt(scanner.nextLine());
+
+                                if (temp < 0) {
+                                    correct = false;
+                                    Mensajes.errorInsertPositiveNumber();
+                                } else {
+                                    monthHistory.setDaysWorkMonth(temp);
+                                }
+
+
                             } catch (NumberFormatException e) {
                                 correct = false;
                                 Mensajes.errorNumberInsert();
                             }
+
                         }
 
-                        if(correct){
+                        if(correct) {
                             try {
                                 employee.setSalaryHistory(new SalaryHistory(2023));
                                 employee.getSalaryHistory().setMonthHistorie(monthHistory);
-                            }
-                            catch (NumberFormatException e) {
-                                correct = false;
 
+                            } catch (NumberFormatException e) {
+                                correct = false;
                                 Mensajes.errorNumberInsert();
                             }
-                        }*/
+
+                        }
+
 
                         if (correct) {
                             company.addEmployee(employee);
@@ -194,53 +211,28 @@ public class Main {
 
                         break;
 
-                    /*case 4:
-                        corect = true;
-                        Hashtable<Integer, Employee> element = null;
+                    case 4:
 
                         try {
                             Mensajes.chargeMensaje();
 
-                            switch (Integer.parseInt(scanner.nextLine())) {
-                                case 1:
-                                    element = company.getEmployeeForCharge(ChargeNames.GENERAL_SERVICES.getName());
-                                    break;
+                            correct = company.getEmployeeForCharge(Integer.parseInt(scanner.nextLine()));
 
-                                case 2:
-                                    element = company.getEmployeeForCharge(ChargeNames.HUMAN_TALENT.getName());
-                                    break;
-
-                                case 3:
-                                    element = company.getEmployeeForCharge(ChargeNames.SECURITY.getName());
-                                    break;
-
-                                case 4:
-                                    element = company.getEmployeeForCharge(ChargeNames.FLOOR.getName());
-                                    break;
-
-                                case 5:
-                                    element = company.getEmployeeForCharge(ChargeNames.CEO.getName());
-                                    break;
-
-                                default:
-                                    corect = false;
-                                    Mensajes.valueNoValid();
-                                    break;
-                            }
-
-                            if (corect && element != null) {
+                            if (correct) {
                                 try {
                                     Mensajes.insertIdOrExit();
                                     Integer temp = Integer.parseInt(scanner.nextLine());
                                     if (temp != -1) {
-                                        Mensajes.infoEmployee(employee.getName(), employee.getCharge().getName(), employee.getCharge().getSalary());
                                         employee = company.getEmployee(temp);
+                                        Mensajes.infoEmployee(employee.getName(), employee.getCharge().getName(), employee.getCharge().getSalary());
                                     }
 
                                 } catch (NumberFormatException e) {
                                     Mensajes.errorNumberInsert();
-
                                 }
+                            }
+                            else {
+                                Mensajes.noFound();
                             }
 
 
@@ -254,7 +246,7 @@ public class Main {
                     case 5:
                         company.printEmployeesSocialLoan();
 
-                        break;*/
+                        break;
 
 
                     default:
@@ -266,7 +258,7 @@ public class Main {
                 Mensajes.errorNumberInsert();
             }
 
-            System.out.println("\n");
+            Mensajes.lineBreak();
         }
     }
 }

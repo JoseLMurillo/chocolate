@@ -1,5 +1,5 @@
 abstract class Charge {
-    String name;
+    ChargeNames name;
     Integer salary;
 
     abstract String getName();
