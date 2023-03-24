@@ -29,16 +29,16 @@ public class Default {
         generalService1.setSalaryHistory(new SalaryHistory(2022));
         hashtable.put(generalService1.getId(), generalService1);
 
-        /*Employee generalService2 = new Employee(234,"Luis", new GeneralServices());
+        Employee generalService2 = new Employee(234,"Luis", new GeneralServices());
         generalService2.setSalaryHistory(new SalaryHistory(2022));
         hashtable.put(generalService2.getId(), generalService2);
 
-        /* COORDINADOR TH
+        /* COORDINADOR TH*/
         Employee coordinator = new Employee(345, "Andres", new HumanTalent());
         coordinator.setSalaryHistory(new SalaryHistory(2022));
         hashtable.put(coordinator.getId(), coordinator);
 
-        /* SEGURIDAD
+        /* SEGURIDAD*/
         Employee security1 = new Employee(456, "Kevin", new Security());
         security1.setSalaryHistory(new SalaryHistory(2022));
         hashtable.put(security1.getId(), security1);

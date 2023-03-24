@@ -68,8 +68,8 @@ public class Mensajes{
       System.out.print("Insert month of admission: ");
   }
 
-  public static void workedDays(){
-      System.out.print("Insert worked days: ");
+  public static void workedDays(Integer month){
+      System.out.print("Insert worked days of month " + month + ": ");
   }
 
   public static void noFound(){
@@ -79,4 +79,9 @@ public class Mensajes{
   public static void lineBreak(){
       System.out.println("\n");
   }
+
+  public static void monthsWorked(){
+      System.out.print("Insert mounths worked: ");
+  }
+
 }

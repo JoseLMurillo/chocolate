@@ -5,7 +5,8 @@ public class Benefits {
     }
 
     public static Double layoffs(Integer monthSalary, Integer daysWorked){
-        return (double) Math.round((daysWorked * monthSalary) / 360);
+        monthSalary = monthSalary / 1000;
+        return (double) Math.round(((daysWorked * monthSalary) / 360) * 1000);
         //return (double) (monthSalary * 8.33) * monthWorked;
     }
 

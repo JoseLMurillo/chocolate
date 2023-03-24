@@ -163,7 +163,7 @@ public class Company {
                 }
             }
 
-            System.out.print(firstPremiumDays + " : " + lastPremiumDays);
+            System.out.print("First days worked: " + firstPremiumDays + "Last days worked : " + lastPremiumDays);
             System.out.println();
 
             firstPremium = Benefits.premium(this.hashtable.get(key).getCharge().getSalary() ,firstPremiumDays);
@@ -179,6 +179,56 @@ public class Company {
 
             System.out.println("Interest layouts: " + Benefits.interestLayoffs(salary, firstPremiumDays + lastPremiumDays));
             System.out.println();
+        }
+    }
+
+    public void printEmployeeSocialLoan(Employee employee){
+        var firstPremiumDays = 0;
+        var lastPremiumDays = 0;
+
+        var firstPremium = 0.0;
+        var lastPremium = 0.0;
+        Enumeration<Integer> keys = this.hashtable.keys();
+
+        while (keys.hasMoreElements()) {
+            Integer key = keys.nextElement();
+            var salary = 0;
+
+            if(employee.getId() == this.hashtable.get(key).getId()){
+                System.out.println("Key: " + key +
+                        ", Name: " + this.hashtable.get(key).getName() +
+                        ", Charge: " + this.hashtable.get(key).getCharge().getName() +
+                        " ");
+
+                for (MonthHistory month :
+                        this.hashtable.get(key).getSalaryHistory().getMonthHistories()) {
+
+                    if (month.getMonth() <= 6) {
+                        //DIAS TRABAJADOS EN EL PRIMER SEMESTRE
+                        firstPremiumDays += month.getDaysWorkMonth();
+                    } else {
+                        //DIAS TRABAJADOS EN EL SEGUNDO SEMESTRE
+                        lastPremiumDays += month.getDaysWorkMonth();
+                    }
+                }
+
+                System.out.print("First days worked: " + firstPremiumDays + ", Last days worked : " + lastPremiumDays);
+                System.out.println();
+
+                firstPremium = Benefits.premium(this.hashtable.get(key).getCharge().getSalary() ,firstPremiumDays);
+                System.out.println("Firts premium: " + firstPremium);
+                lastPremium = Benefits.premium(this.hashtable.get(key).getCharge().getSalary() ,lastPremiumDays);
+                System.out.println("Lasts premium: " + lastPremium);
+
+                System.out.println("Layouts: " + Benefits.layoffs(this.hashtable.get(key).getCharge().getSalary(),
+                        firstPremiumDays + lastPremiumDays));
+
+                salary += Benefits.premium(this.hashtable.get(key).getCharge().getSalary() ,firstPremiumDays) +
+                        Benefits.premium(this.hashtable.get(key).getCharge().getSalary() ,lastPremiumDays);
+
+                System.out.println("Interest layouts: " + Benefits.interestLayoffs(salary, firstPremiumDays + lastPremiumDays));
+                System.out.println();
+            }
         }
     }
 
