@@ -10,16 +10,18 @@ public class Main {
         Boolean correct;
         Scanner scannerTemp = new Scanner(System.in);
         Employee employee = new Employee();
-        MonthHistory monthHistory = new MonthHistory();
+        MonthHistory monthHistoryTemp = new MonthHistory();
 
         while(ctrl) {
             Scanner scanner = scannerTemp;
+            MonthHistory monthHistory = monthHistoryTemp;
+            correct = true;
+
             Mensajes.menuMensaje(company.getName());
 
             try {
                 switch (Integer.parseInt(scanner.nextLine())) {
                     case 1:
-                        correct = true;
                         Mensajes.insertId();
                     try {
                             Integer temp = Integer.parseInt(scanner.nextLine());
@@ -56,33 +58,36 @@ public class Main {
 
                         if (correct) {
                             Mensajes.chargeMensaje();
-
                             try {
-                                switch (Integer.parseInt(scanner.nextLine())) {
-                                    case 1:
-                                        employee.setCharge(new GeneralServices());
-                                        break;
+                                Integer temp = Integer.parseInt(scanner.nextLine());
 
-                                    case 2:
-                                        employee.setCharge(new HumanTalent());
-                                        break;
+                                if(temp > 0){
+                                    switch (temp) {
+                                        case 1:
+                                            employee.setCharge(new GeneralServices());
+                                            break;
 
-                                    case 3:
-                                        employee.setCharge(new Security());
-                                        break;
+                                        case 2:
+                                            employee.setCharge(new HumanTalent());
+                                            break;
 
-                                    case 4:
-                                        employee.setCharge(new Floor());
-                                        break;
+                                        case 3:
+                                            employee.setCharge(new Security());
+                                            break;
 
-                                    case 5:
-                                        employee.setCharge(new Ceo());
-                                        break;
+                                        case 4:
+                                            employee.setCharge(new Floor());
+                                            break;
 
-                                    default:
-                                        correct = false;
-                                        Mensajes.employeeNoAdded();
-                                        break;
+                                        case 5:
+                                            employee.setCharge(new Ceo());
+                                            break;
+
+                                        default:
+                                            correct = false;
+                                            Mensajes.employeeNoAdded();
+                                            break;
+                                    }
                                 }
 
                             } catch (NumberFormatException e) {
@@ -106,7 +111,7 @@ public class Main {
                                     Mensajes.valueNoValid();
 
                                 } else {
-                                    while (i < monthsWorked) {
+                                    while (i < monthsWorked && correct) {
                                         try {
                                             i += 1;
                                             Mensajes.workedDays(i);
@@ -143,7 +148,6 @@ public class Main {
 
                     case 2:
                         try {
-                            correct = true;
                             Mensajes.insertId();
 
                             employee = company.getEmployee(Integer.parseInt(scanner.nextLine()));
@@ -257,13 +261,18 @@ public class Main {
 
                         try {
                             Mensajes.chargeMensaje();
-
-                            correct = company.getEmployeeForCharge(Integer.parseInt(scanner.nextLine()));
+                            Integer temp = Integer.parseInt(scanner.nextLine());
+                            if(temp < 0 || temp > 6){
+                                correct = false;
+                            }
+                            else {
+                                correct = company.getEmployeeForCharge(temp);
+                            }
 
                             if (correct) {
                                 try {
                                     Mensajes.insertIdOrExit();
-                                    Integer temp = Integer.parseInt(scanner.nextLine());
+                                    temp = Integer.parseInt(scanner.nextLine());
                                     if (temp != -1) {
                                         employee = company.getEmployee(temp);
                                         Mensajes.infoEmployee(employee.getName(), employee.getCharge().getName(), employee.getCharge().getSalary());

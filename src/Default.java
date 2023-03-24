@@ -12,7 +12,7 @@ public class Default {
 
             for (int i=1; i<=12; i++){
                 if(i == 2){
-                    hashtable.get(key).getSalaryHistory().setMonthHistorie(new MonthHistory(i,28));
+                    hashtable.get(key).getSalaryHistory().setMonthHistorie(new MonthHistory(i,30));
 
                 }
                 else {
@@ -47,7 +47,7 @@ public class Default {
         security2.setSalaryHistory(new SalaryHistory(2022));
         hashtable.put(security2.getId(), security2);
 
-        /* PLANTA
+        /* PLANTA*/
         Employee floor1 = new Employee(678, "Ector", new Floor());
         floor1.setSalaryHistory(new SalaryHistory(2022));
         hashtable.put(floor1.getId(), floor1);

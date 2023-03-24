@@ -138,6 +138,8 @@ public class Company {
     public void printEmployeesSocialLoan(){
         var firstPremiumDays = 0;
         var lastPremiumDays = 0;
+        var salary = 0;
+
 
         var firstPremium = 0.0;
         var lastPremium = 0.0;
@@ -145,7 +147,10 @@ public class Company {
 
         while (keys.hasMoreElements()) {
             Integer key = keys.nextElement();
-            var salary = 0;
+            firstPremiumDays = 0;
+            lastPremiumDays = 0;
+            salary = 0;
+
             System.out.println("Key: " + key +
                     ", Name: " + this.hashtable.get(key).getName() +
                     ", Charge: " + this.hashtable.get(key).getCharge().getName() +
@@ -163,7 +168,7 @@ public class Company {
                 }
             }
 
-            System.out.print("First days worked: " + firstPremiumDays + "Last days worked : " + lastPremiumDays);
+            System.out.print("First days worked: " + firstPremiumDays + " Last days worked : " + lastPremiumDays);
             System.out.println();
 
             firstPremium = Benefits.premium(this.hashtable.get(key).getCharge().getSalary() ,firstPremiumDays);
