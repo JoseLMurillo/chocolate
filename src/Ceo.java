@@ -18,12 +18,4 @@ public class Ceo extends Charge {
     Integer getSalary() {
         return salary;
     }
-
-    public Hashtable<Integer, Employee> getHashtable() {
-        return hashtable;
-    }
-
-    public void setHashtable(Hashtable<Integer, Employee> hashtable) {
-        this.hashtable = hashtable;
-    }
 }

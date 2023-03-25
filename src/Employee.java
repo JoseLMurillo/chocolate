@@ -4,22 +4,8 @@ public class Employee {
     private Integer id;
     private String name;
     private Charge charge;
-    private Integer daysWorkedSemester;
-  private Integer daysWorkedMonth;
-  private SalaryHistory salaryHistory;
 
-    public Integer getDaysWorkedSemester() {
-	return daysWorkedSemester;
-}
-public void setDaysWorkedSemester(final Integer daysWorkedSemester) {
-	this.daysWorkedSemester = daysWorkedSemester;
-}
-public Integer getDaysWorkedMonth() {
-	return daysWorkedMonth;
-}
-public void setDaysWorkedMonth(final Integer daysWorkedMonth) {
-	this.daysWorkedMonth = daysWorkedMonth;
-}
+  private SalaryHistory salaryHistory;
 
 	Employee(){}
   

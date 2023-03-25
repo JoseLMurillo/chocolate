@@ -99,7 +99,7 @@ public class Main {
 
                         if(correct) {
                             Mensajes.monthsWorked();
-                            employee.setSalaryHistory(new SalaryHistory(2023));
+                            employee.setSalaryHistory(new SalaryHistory());
 
                             int i = 0;
 
@@ -184,7 +184,7 @@ public class Main {
 
                                 if(correct) {
                                     Mensajes.monthsWorked();
-                                    employee.setSalaryHistory(new SalaryHistory(2023));
+                                    employee.setSalaryHistory(new SalaryHistory());
 
                                     int i = 0;
 
@@ -253,6 +253,7 @@ public class Main {
 
                         } catch (NumberFormatException e) {
                             Mensajes.errorNumberInsert();
+                            Mensajes.valueNoValid();
                         }
 
                         break;
@@ -264,32 +265,29 @@ public class Main {
                             Integer temp = Integer.parseInt(scanner.nextLine());
                             if(temp < 0 || temp > 6){
                                 correct = false;
+                                Mensajes.valueNoValid();
                             }
                             else {
                                 correct = company.getEmployeeForCharge(temp);
-                            }
-
-                            if (correct) {
                                 try {
                                     Mensajes.insertIdOrExit();
                                     temp = Integer.parseInt(scanner.nextLine());
                                     if (temp != -1) {
                                         employee = company.getEmployee(temp);
                                         Mensajes.infoEmployee(employee.getName(), employee.getCharge().getName(), employee.getCharge().getSalary());
+                                    } else {
+                                        Mensajes.noFound();
                                     }
 
                                 } catch (NumberFormatException e) {
                                     Mensajes.errorNumberInsert();
                                 }
                             }
-                            else {
-                                Mensajes.noFound();
-                            }
-
 
                         } catch (NumberFormatException e) {
 
                             Mensajes.errorNumberInsert();
+                            Mensajes.valueNoValid();
                         }
 
                         break;

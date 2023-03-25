@@ -160,10 +160,8 @@ public class Company {
                     this.hashtable.get(key).getSalaryHistory().getMonthHistories()) {
 
                 if (month.getMonth() <= 6) {
-                    //DIAS TRABAJADOS EN EL PRIMER SEMESTRE
                     firstPremiumDays += month.getDaysWorkMonth();
                 } else {
-                    //DIAS TRABAJADOS EN EL SEGUNDO SEMESTRE
                     lastPremiumDays += month.getDaysWorkMonth();
                 }
             }
