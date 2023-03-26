@@ -4,9 +4,9 @@ public class Main {
     public static void main(String[] args) {
 
         Company company = new Company();
-        company.setEmployeesHashTable(Default.chargeDefault());
+        company.setEmployeesHashTable(Preload.chargeDefault());
 
-        Boolean ctrl = true;
+        boolean ctrl = true;
         Boolean correct;
         Scanner scannerTemp = new Scanner(System.in);
         Employee employee = new Employee();
@@ -17,29 +17,33 @@ public class Main {
             MonthHistory monthHistory = monthHistoryTemp;
             correct = true;
 
-            Mensajes.menuMensaje(company.getName());
+            Messages.menuMensaje(company.getName());
 
             try {
                 switch (Integer.parseInt(scanner.nextLine())) {
                     case 1:
-                        Mensajes.insertId();
+                        Messages.insertId();
                     try {
                             Integer temp = Integer.parseInt(scanner.nextLine());
                             if (temp < 0) {
                                 correct = false;
-                                Mensajes.errorInsertPositiveNumber();
+                                Messages.errorInsertPositiveNumber();
                             }
-
-                            employee.setId(temp);
+                            else if (company.getEmployee(temp) != null) {
+                                Messages.employeeExist();
+                            }
+                            else {
+                                employee.setId(temp);
+                            }
 
                         } catch (NumberFormatException e) {
                             correct = false;
-                            Mensajes.errorNumberInsert();
-                            Mensajes.valueNoValid();
+                            Messages.errorNumberInsert();
+                            Messages.valueNoValid();
                         }
 
                         if (correct) {
-                            Mensajes.insertName();
+                            Messages.insertName();
                             try {
                                 String name = scanner.nextLine();
                                 if(name != ""){
@@ -47,17 +51,17 @@ public class Main {
                                 }
                                 else {
                                     correct = false;
-                                    Mensajes.valueNoValid();
+                                    Messages.valueNoValid();
                                 }
 
                             } catch (NumberFormatException e) {
                                 correct = false;
-                                Mensajes.errorNumberInsert();
+                                Messages.errorNumberInsert();
                             }
                         }
 
                         if (correct) {
-                            Mensajes.chargeMensaje();
+                            Messages.chargeMensaje();
                             try {
                                 Integer temp = Integer.parseInt(scanner.nextLine());
 
@@ -85,7 +89,7 @@ public class Main {
 
                                         default:
                                             correct = false;
-                                            Mensajes.employeeNoAdded();
+                                            Messages.employeeNoAdded();
                                             break;
                                     }
                                 }
@@ -93,12 +97,12 @@ public class Main {
                             } catch (NumberFormatException e) {
                                 correct = false;
 
-                                Mensajes.errorNumberInsert();
+                                Messages.errorNumberInsert();
                             }
                         }
 
                         if(correct) {
-                            Mensajes.monthsWorked();
+                            Messages.monthsWorked();
                             employee.setSalaryHistory(new SalaryHistory());
 
                             int i = 0;
@@ -108,35 +112,35 @@ public class Main {
 
                                 if (monthsWorked > 12 || monthsWorked < 0) {
                                     correct = false;
-                                    Mensajes.valueNoValid();
+                                    Messages.valueNoValid();
 
                                 } else {
                                     while (i < monthsWorked && correct) {
                                         try {
                                             i += 1;
-                                            Mensajes.workedDays(i);
+                                            Messages.workedDays(i);
                                             Integer temp = Integer.parseInt(scanner.nextLine());
 
                                             if (temp < 0 || temp > 32) {
                                                 correct = false;
-                                                Mensajes.valueNoValid();
+                                                Messages.valueNoValid();
 
                                             } else {
                                                 monthHistory.setMonth(monthsWorked);
                                                 monthHistory.setDaysWorkMonth(temp);
 
-                                                employee.getSalaryHistory().setMonthHistorie(monthHistory);
+                                                employee.History().setMonthHistorie(monthHistory);
                                             }
 
                                         } catch(NumberFormatException e){
                                         correct = false;
-                                        Mensajes.errorNumberInsert();
+                                        Messages.errorNumberInsert();
                                         }
                                     }
                                 }
                                 } catch(NumberFormatException e){
                                     correct = false;
-                                    Mensajes.errorNumberInsert();
+                                    Messages.errorNumberInsert();
                                 }
                         }
 
@@ -148,12 +152,12 @@ public class Main {
 
                     case 2:
                         try {
-                            Mensajes.insertId();
+                            Messages.insertId();
 
                             employee = company.getEmployee(Integer.parseInt(scanner.nextLine()));
 
                             if (employee != null) {
-                                Mensajes.chargeMensaje();
+                                Messages.chargeMensaje();
 
                                 switch (Integer.parseInt(scanner.nextLine())) {
                                     case 1:
@@ -177,13 +181,13 @@ public class Main {
                                         break;
 
                                     default:
-                                        Mensajes.employeeNoUpdated();
+                                        Messages.employeeNoUpdated();
                                         correct = false;
                                         break;
                                 }
 
                                 if(correct) {
-                                    Mensajes.monthsWorked();
+                                    Messages.monthsWorked();
                                     employee.setSalaryHistory(new SalaryHistory());
 
                                     int i = 0;
@@ -193,35 +197,35 @@ public class Main {
 
                                         if (monthsWorked > 12 || monthsWorked < 0) {
                                             correct = false;
-                                            Mensajes.valueNoValid();
+                                            Messages.valueNoValid();
 
                                         } else {
                                             while (i < monthsWorked) {
                                                 try {
                                                     i += 1;
-                                                    Mensajes.workedDays(i);
+                                                    Messages.workedDays(i);
                                                     Integer temp = Integer.parseInt(scanner.nextLine());
 
                                                     if (temp < 0 || temp > 32) {
                                                         correct = false;
-                                                        Mensajes.valueNoValid();
+                                                        Messages.valueNoValid();
 
                                                     } else {
                                                         monthHistory.setMonth(monthsWorked);
                                                         monthHistory.setDaysWorkMonth(temp);
 
-                                                        employee.getSalaryHistory().setMonthHistorie(monthHistory);
+                                                        employee.History().setMonthHistorie(monthHistory);
                                                     }
 
                                                 } catch(NumberFormatException e){
                                                     correct = false;
-                                                    Mensajes.errorNumberInsert();
+                                                    Messages.errorNumberInsert();
                                                 }
                                             }
                                         }
                                     } catch(NumberFormatException e){
                                         correct = false;
-                                        Mensajes.errorNumberInsert();
+                                        Messages.errorNumberInsert();
                                     }
                                 }
 
@@ -231,20 +235,17 @@ public class Main {
                             }
                         } catch (NumberFormatException e) {
 
-                            Mensajes.errorNumberInsert();
+                            Messages.errorNumberInsert();
                         }
 
                         break;
 
                     case 3:
                         try {
-                            Mensajes.insertId();
+                            Messages.insertId();
                             employee = company.getEmployee(Integer.parseInt(scanner.nextLine()));
 
                             if(employee != null){
-                                Mensajes.infoEmployee2(employee.getName(), employee.getCharge().getName(),
-                                        employee.getCharge().getSalary());
-
                                 company.printEmployeeSocialLoan(employee);
                             }
                             else {
@@ -252,8 +253,8 @@ public class Main {
                             }
 
                         } catch (NumberFormatException e) {
-                            Mensajes.errorNumberInsert();
-                            Mensajes.valueNoValid();
+                            Messages.errorNumberInsert();
+                            Messages.valueNoValid();
                         }
 
                         break;
@@ -261,33 +262,33 @@ public class Main {
                     case 4:
 
                         try {
-                            Mensajes.chargeMensaje();
+                            Messages.chargeMensaje();
                             Integer temp = Integer.parseInt(scanner.nextLine());
                             if(temp < 0 || temp > 6){
                                 correct = false;
-                                Mensajes.valueNoValid();
+                                Messages.valueNoValid();
                             }
                             else {
                                 correct = company.getEmployeeForCharge(temp);
                                 try {
-                                    Mensajes.insertIdOrExit();
+                                    Messages.insertIdOrExit();
                                     temp = Integer.parseInt(scanner.nextLine());
                                     if (temp != -1) {
                                         employee = company.getEmployee(temp);
-                                        Mensajes.infoEmployee(employee.getName(), employee.getCharge().getName(), employee.getCharge().getSalary());
+                                        company.printEmployeeSocialLoan(employee);
                                     } else {
-                                        Mensajes.noFound();
+                                        Messages.noFound();
                                     }
 
                                 } catch (NumberFormatException e) {
-                                    Mensajes.errorNumberInsert();
+                                    Messages.errorNumberInsert();
                                 }
                             }
 
                         } catch (NumberFormatException e) {
 
-                            Mensajes.errorNumberInsert();
-                            Mensajes.valueNoValid();
+                            Messages.errorNumberInsert();
+                            Messages.valueNoValid();
                         }
 
                         break;
@@ -304,10 +305,10 @@ public class Main {
                 }
 
             } catch (NumberFormatException e) {
-                Mensajes.errorNumberInsert();
+                Messages.errorNumberInsert();
             }
 
-            Mensajes.lineBreak();
+            Messages.lineBreak();
         }
     }
 }

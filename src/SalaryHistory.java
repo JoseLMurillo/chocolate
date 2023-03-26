@@ -1,17 +1,17 @@
 import java.util.ArrayList;
 
 public class SalaryHistory{
-    private ArrayList<MonthHistory> monthHistories;
+    private ArrayList<MonthHistory> salaryHistory;
 
   SalaryHistory(){
-      this.monthHistories = new ArrayList<>();
+      this.salaryHistory = new ArrayList<>();
   }
 
-    public ArrayList<MonthHistory> getMonthHistories() {
-        return this.monthHistories;
+    public ArrayList<MonthHistory> getSalaryHistory() {
+        return this.salaryHistory;
     }
 
     public void setMonthHistorie(MonthHistory monthHistories) {
-        this.monthHistories.add(monthHistories);
+        this.salaryHistory.add(monthHistories);
     }
 }

@@ -2,8 +2,8 @@ public enum ChargeNames {
     GENERAL_SERVICES("General services"),
     HUMAN_TALENT("Human talent"),
     SECURITY("Security"),
-    FLOOR("Floor"),
-    CEO("Ceo");
+    CEO("Ceo"),
+    FLOOR("Floor");
 
     private String name;
 

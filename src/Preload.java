@@ -1,9 +1,9 @@
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-public class Default {
+public class Preload {
 
-    static Hashtable<Integer, Employee> hashtable = new Hashtable<Integer, Employee>();
+    static Hashtable<Integer, Employee> hashtable = new Hashtable<>();
 
     public static void generateMonthInfo(){
         Enumeration<Integer> keys = hashtable.keys();
@@ -12,10 +12,13 @@ public class Default {
 
             for (int i=1; i<=12; i++){
                 if(i == 2){
-                    hashtable.get(key).getSalaryHistory().setMonthHistorie(new MonthHistory(i,(int)(Math.random() * 28)));
+                    //hashtable.get(key).getSalaryHistory().setMonthHistorie(new MonthHistory(i,(int)(Math.random() * 28)));
+                    hashtable.get(key).History().setMonthHistorie(new MonthHistory(i,30, 2023));
+
                 }
                 else {
-                    hashtable.get(key).getSalaryHistory().setMonthHistorie(new MonthHistory(i,(int)(Math.random() * 30)));
+                    //hashtable.get(key).getSalaryHistory().setMonthHistorie(new MonthHistory(i,(int)(Math.random() * 30)));
+                    hashtable.get(key).History().setMonthHistorie(new MonthHistory(i,30, 2023));
                 }
             }
         }

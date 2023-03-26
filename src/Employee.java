@@ -1,5 +1,3 @@
-import java.util.ArrayList;
-
 public class Employee {
     private Integer id;
     private String name;
@@ -41,7 +39,7 @@ public class Employee {
         this.salaryHistory = salary;
     }
 
-    public SalaryHistory getSalaryHistory(){
+    public SalaryHistory History(){
         return this.salaryHistory;
     }
 

@@ -1,8 +1,4 @@
-import java.util.Hashtable;
-
 public class Ceo extends Charge {
-
-    private Hashtable<Integer, Employee> hashtable;
 
     Ceo(){
         name = ChargeNames.CEO;
