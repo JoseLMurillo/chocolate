@@ -1,5 +1,4 @@
 public class MonthHistory {
-    private Integer year;
     private Integer month;
     private Integer daysWorkMonth;
 
@@ -7,10 +6,9 @@ public class MonthHistory {
 
     }
 
-    MonthHistory(Integer month, Integer daysWorkMonth, Integer year){
+    MonthHistory(Integer month, Integer daysWorkMonth){
         this.month = month;
         this.daysWorkMonth = daysWorkMonth;
-        this.year = year;
     }
 
     public Integer getMonth() {
@@ -27,13 +25,5 @@ public class MonthHistory {
 
     public void setDaysWorkMonth(Integer daysWorkMonth) {
         this.daysWorkMonth = daysWorkMonth;
-    }
-
-    public Integer getYear() {
-        return year;
-    }
-
-    public void setYear(Integer year) {
-        this.year = year;
     }
 }

@@ -82,12 +82,6 @@ public class Messages {
       System.out.println("Employee updated");
   }
 
-  public static void employeeInfo(Employee employee){
-      System.out.println("Key: " + employee.getId() +
-              ", Name: " + employee.getName() +
-              ", Charge: " + employee.getCharge().getName());
-  }
-
     public static void integralSalaryLoan(Employee employee, double salary, double familyCompensationFund, double ICBF,
                                           double sena, double payEmployee, double salaryCompany, double pension, double health,
                                           double ARL, double solidarityPensionFund){
@@ -107,9 +101,9 @@ public class Messages {
                     "Pay the company: " + salaryCompany +
                     ", Pay the employee: " + payEmployee +
                     ", Pension: " + pension +
-                    ", Health: " + Math.round(health) +
+                    ", Health: " + health +
                     ", ARL: " + ARL +
-                    " Solidarity pension fund: " + solidarityPensionFund);
+                    ", Solidarity pension fund: " + solidarityPensionFund + ".");
 
         }else {
             Messages.employeeNoExist();
@@ -120,7 +114,7 @@ public class Messages {
                                           double interesLayoffs, double salary, Integer vacationsDays,
                                           double vacations, double familyCompensationFund, double ICBF, double sena,
                                           double payEmployee, double salaryCompany, double pension, double health,
-                                          double ARL, double solidarityPensionFund){
+                                          double ARL){
       if(employee != null){
           System.out.println("Key: " + employee.getId() +
                   ", Name: " + employee.getName() +
@@ -145,9 +139,8 @@ public class Messages {
                   "Pay the company: " + salaryCompany +
                   ", Pay the employee: " + payEmployee +
                   ", Pension: " + pension +
-                  ", Health: " + Math.round(health) +
-                  ", ARL: " + ARL +
-                  "S olidarity pension fund: " + solidarityPensionFund);
+                  ", Health: " + health +
+                  ", ARL: " + ARL + ".");
 
 
       }else {

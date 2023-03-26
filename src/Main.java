@@ -30,6 +30,7 @@ public class Main {
                                 Messages.errorInsertPositiveNumber();
                             }
                             else if (company.getEmployee(temp) != null) {
+                                correct = false;
                                 Messages.employeeExist();
                             }
                             else {
@@ -260,17 +261,15 @@ public class Main {
                         break;
 
                     case 4:
-
                         try {
                             Messages.chargeMensaje();
                             Integer temp = Integer.parseInt(scanner.nextLine());
                             if(temp < 0 || temp > 6){
-                                correct = false;
                                 Messages.valueNoValid();
                             }
                             else {
-                                correct = company.getEmployeeForCharge(temp);
                                 try {
+                                    company.getEmployeeForCharge(temp);
                                     Messages.insertIdOrExit();
                                     temp = Integer.parseInt(scanner.nextLine());
                                     if (temp != -1) {

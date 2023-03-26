@@ -12,13 +12,10 @@ public class Preload {
 
             for (int i=1; i<=12; i++){
                 if(i == 2){
-                    //hashtable.get(key).getSalaryHistory().setMonthHistorie(new MonthHistory(i,(int)(Math.random() * 28)));
-                    hashtable.get(key).History().setMonthHistorie(new MonthHistory(i,30, 2023));
-
+                    hashtable.get(key).History().setMonthHistorie(new MonthHistory(i,(int)(Math.random() * 28)));
                 }
                 else {
-                    //hashtable.get(key).getSalaryHistory().setMonthHistorie(new MonthHistory(i,(int)(Math.random() * 30)));
-                    hashtable.get(key).History().setMonthHistorie(new MonthHistory(i,30, 2023));
+                    hashtable.get(key).History().setMonthHistorie(new MonthHistory(i,(int)(Math.random() * 30)));
                 }
             }
         }
@@ -26,7 +23,6 @@ public class Preload {
 
     public static Hashtable<Integer, Employee> chargeDefault (){
 
-        /* SERVICIOS GENERALES*/
         Employee generalService1 = new Employee(123,"Jose", new GeneralServices());
         generalService1.setSalaryHistory(new SalaryHistory());
         hashtable.put(generalService1.getId(), generalService1);
@@ -35,12 +31,12 @@ public class Preload {
         generalService2.setSalaryHistory(new SalaryHistory());
         hashtable.put(generalService2.getId(), generalService2);
 
-        /* COORDINADOR TH*/
+
         Employee coordinator = new Employee(345, "Andres", new HumanTalent());
         coordinator.setSalaryHistory(new SalaryHistory());
         hashtable.put(coordinator.getId(), coordinator);
 
-        /* SEGURIDAD*/
+
         Employee security1 = new Employee(456, "Kevin", new Security());
         security1.setSalaryHistory(new SalaryHistory());
         hashtable.put(security1.getId(), security1);
@@ -49,7 +45,7 @@ public class Preload {
         security2.setSalaryHistory(new SalaryHistory());
         hashtable.put(security2.getId(), security2);
 
-        /* PLANTA*/
+
         Employee floor1 = new Employee(678, "Ector", new Floor());
         floor1.setSalaryHistory(new SalaryHistory());
         hashtable.put(floor1.getId(), floor1);
@@ -66,7 +62,7 @@ public class Preload {
         floor4.setSalaryHistory(new SalaryHistory());
         hashtable.put(floor4.getId(), floor4);
 
-        /* CEO*/
+
         Employee ceo = new Employee(666, "Julian", new Ceo());
         ceo.setSalaryHistory(new SalaryHistory());
         hashtable.put(ceo.getId(), ceo);
